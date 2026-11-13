@@ -1,0 +1,137 @@
+:root {
+  --tinta: #0f1a35;
+  --tinta-clara: #1a2850;
+  --dourado: #ffc233;
+  --fundo: #ffffff;
+  --texto: #1b2338;
+  --suave: #5a6379;
+  --linha: #e3e6ee;
+  --claro: #b8c0d8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.6;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+h1, h2, h3, .iniciais, .grande { font-family: "Bricolage Grotesque", system-ui, sans-serif; }
+
+a:focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
+
+/* ---------- Painel lateral fixo ---------- */
+.lateral {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 36px;
+  background: var(--tinta);
+  color: #fff;
+}
+.iniciais {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  background: var(--dourado);
+  color: var(--tinta);
+  font-weight: 800;
+  font-size: 1.5rem;
+  border-radius: 14px;
+}
+.lateral h1 { font-size: 1.7rem; line-height: 1.15; }
+.funcao { margin-top: 8px; color: var(--dourado); font-weight: 500; }
+
+.lateral nav { margin-top: 40px; display: grid; gap: 4px; }
+.lateral nav a {
+  color: var(--claro);
+  text-decoration: none;
+  padding: 8px 12px;
+  margin-left: -12px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.lateral nav a:hover { background: var(--tinta-clara); color: #fff; }
+
+.email { color: var(--claro); font-size: 0.9rem; word-break: break-all; }
+.email:hover { color: var(--dourado); }
+
+/* ---------- Conteúdo ---------- */
+main { padding: 0 8vw; max-width: 980px; }
+section { padding: 72px 0; border-bottom: 1px solid var(--linha); }
+
+.abertura { padding-top: 96px; }
+.grande {
+  font-size: clamp(1.8rem, 4.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  max-width: 20ch;
+}
+.texto { margin-top: 28px; max-width: 60ch; color: var(--suave); font-size: 1.05rem; }
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--suave);
+  margin-bottom: 32px;
+}
+
+/* Linhas: título à esquerda, conteúdo à direita */
+.projeto, .linha {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--linha);
+}
+.projeto h3, .linha h3 { font-size: 1.3rem; line-height: 1.2; }
+.projeto p, .linha p { color: var(--suave); }
+
+/* Etiquetas */
+.etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.linha .etiquetas { margin-top: 0; }
+.etiquetas li {
+  background: #fff4d6;
+  color: #5c4300;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+/* Contacto */
+.contacto { border-bottom: 0; }
+.contacto .grande { margin-bottom: 32px; }
+.botao {
+  display: inline-block;
+  background: var(--tinta);
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.botao:hover { background: var(--dourado); color: var(--tinta); }
+
+footer { padding: 28px 0 48px; color: var(--suave); font-size: 0.9rem; border-top: 1px solid var(--linha); }
+
+/* ---------- Telemóvel ---------- */
+@media (max-width: 860px) {
+  body { grid-template-columns: 1fr; }
+  .lateral { position: static; height: auto; gap: 28px; padding: 36px 6vw; }
+  .lateral nav { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 24px; }
+  .lateral nav a { margin-left: 0; padding: 6px 0; }
+  main { padding: 0 6vw; }
+  .projeto, .linha { grid-template-columns: 1fr; gap: 10px; }
+}
